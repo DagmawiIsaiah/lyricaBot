@@ -43,4 +43,9 @@ def send_lyrics(message):
         # Send the message with Markdown style for bold
         bot.send_message(message.chat.id, full_message, parse_mode='Markdown')
 
-bot.polling()
+try:
+    bot.polling()
+except Exception as e:
+    print(e)
+    bot.stop_polling()
+    bot.polling()
