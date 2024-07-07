@@ -15,7 +15,7 @@ load_dotenv()
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
-    bot.send_message(message.chat.id, "Hello, I'm a bot that can send you lyrics of any song you want. Just type the name of the artist and the name of the song, separated by a comma. For example: <NAME>, Never Gonna Give You Up")
+    bot.send_message(message.chat.id, "Hello, I'm a bot that can send you lyrics of any song you want. Just type the name of the artist and the name of the song, separated by a comma. For example: Adele, Hello \n developer: https://t.me/lyrics_gen_bot/lyrica")
 
 @bot.message_handler(content_types=['text'])
 def send_lyrics(message):
@@ -26,7 +26,13 @@ def send_lyrics(message):
     lyrics = API.lyrics
     
     if len(lyrics) < 30:
-        bot.send_message(message.chat.id, "Sorry, I couldn't find any lyrics for that song.")
+        bot.send_message(
+        message.chat.id,
+        "Hello, I'm a bot that can send you lyrics of any song you want. Just type the name of the artist and the name of the song, separated by a comma.\n\n"
+        "**For example:** Adele, Hello\n\n"
+        "**Developer:** [lyrics_gen_bot/lyrica](https://t.me/lyrics_gen_bot/lyrica)",
+        parse_mode='Markdown'
+        )
         return
 
     else:
