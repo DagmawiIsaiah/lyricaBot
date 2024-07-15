@@ -8,7 +8,7 @@ load_dotenv()
 
 API_KEY = os.getenv("API_KEY")
 bot = telebot.TeleBot(API_KEY)
-API = azapi.AZlyrics('google', accuracy=0.8)
+API = azapi.AZlyrics('google', accuracy=0.5)
 
 # Load environment variables from .env file
 load_dotenv()
